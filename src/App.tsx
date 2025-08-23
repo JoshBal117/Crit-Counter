@@ -17,7 +17,7 @@ function App() {
     </main>
 
     <footer className="h-12 border-grid place-items-center text-xs">
-      © 2023 Crit & Counter
+      © 2025 Crit & Counter
     </footer>
      </div>
   );

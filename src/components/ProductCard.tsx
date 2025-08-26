@@ -9,23 +9,33 @@ type Props = {
 
 export default function ProductCard({ name, price, image, tags }: Props) {
     return (
-        <div style={{ border: "1px solid #eee", borderRadius: 12, overflow: "hidden" }}>
-            <img src={image} alt={name} style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
-            <div style={{ padding: 8 }}>
-                <div style={{ fontSize: 14, lineHeight: 1.3 }}>{name}</div>
-                <div style={{ marginTop: 4, fontWeight: 600 }}>{`${(price/100).toFixed(2)}`}</div>
-                {!!tags?.length &&(
-                    <div style={{ marginTop: 6, display: "flex", gap:6, flexWrap: "wrap"}}>
-                        {tags.slice(0,2).map(t => (
-                            <span key={t} style={{fontSize: 10, padding: "2px 6px", background: "#f1f5f9", borderRadius: 999 }}>
-                                {t.toUpperCase()}
-                            </span>
-                        ))}
-                    </div>
-                )} 
-            </div>
-        </div>
-    );
-}
+        <div className="border rounded-lg shadow-sm overflow-hidden hover:shadow-md transition">
+      {/* 👇 The image is constrained here */}
+      <img 
+        src={image} 
+        alt={name} 
+        className="w-full h-48 object-cover" 
+      />
 
+      <div className="p-3">
+        <h2 className="font-semibold text-sm">{name}</h2>
+        <p className="text-gray-600">${(price / 100).toFixed(2)}</p>
+
+        {/* Optional tags (like Pokemon, MTG, etc.) */}
+        {tags && (
+          <div className="mt-2 flex flex-wrap gap-1">
+            {tags.map(tag => (
+              <span 
+                key={tag} 
+                className="text-xs bg-gray-200 px-2 py-0.5 rounded-full"
+              >
+                {tag.toUpperCase()}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
 

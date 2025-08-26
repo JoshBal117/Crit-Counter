@@ -1,9 +1,11 @@
 import { Outlet, NavLink} from "react-router-dom";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <div className="min-h-dvh flex flex-col">
       <header className="h-14 border-b flex items center px-4">
+        <Navbar />
         <strong>Crit & Counter</strong>
         <nav className="ml-auto text-sm">
           <NavLink to="/" className="px-2">Shop</NavLink>

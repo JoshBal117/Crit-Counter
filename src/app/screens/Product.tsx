@@ -1,5 +1,6 @@
 
 import { useLocation, useParams, Link } from "react-router-dom";
+import { useCart } from "../cart/useCart";
 
 type Product = {
     id: string;
@@ -12,6 +13,7 @@ type Product = {
 
 export default function Product() {
     const { id} = useParams();
+    const { addToCart } = useCart();
     const location = useLocation() as { state?: { product?: Product} };
     const product = location.state?.product;
     
@@ -29,9 +31,15 @@ export default function Product() {
 
 const money = (c: number) => `$${(c / 100).toFixed(2)}`;
 
-function handleAddToCart() {
 
-    alert('Added 1 x ${product.name} to cart (mock)');
+
+function handleAddToCart() {
+    addToCart({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+    });
 }
 
     return (

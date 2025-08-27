@@ -63,7 +63,7 @@ export default function Cart() {
                         >
                             -
                         </button>
-                        <span style={{ minWidth: 24, textAlign: "center"}}>[item.qty]</span>
+                        <span style={{ minWidth: 24, textAlign: "center"}}>{item.qty}</span>
                         <button 
                         onClick={() => 
                             addToCart({id: item.id, name: item.name, price: item.price, image: item.image})

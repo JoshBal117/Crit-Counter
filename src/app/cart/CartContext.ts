@@ -16,6 +16,8 @@ export type CartContextType= {
     addToCart: (item: Omit<CartItem, "qty">) => void;
     removeFromCart: (id: string) => void;
     clearCart: () => void;
+    decrement: (id: string) => void; 
+    setQty?: (id: string, qty: number) => void;
 };
 
 

@@ -42,7 +42,7 @@ function handleAddToCart() {
 }
 
     return (
-        <div className="p-4 max-w-5xl mx-auto">
+        <div className="p-4">
       <Link to="/" className="inline-block py-2 text-sky-600">← Back to shop</Link>
 
 

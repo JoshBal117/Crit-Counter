@@ -4,7 +4,7 @@ import Home from "./screens/Home";
 import Cart from "./screens/Cart";
 import Product from "./screens/Product";
 import Checkout from "./screens/Checkout";
-import OderConfirmation from "./screens/OderConfirmation";
+import OrderConfirmation from "./screens/OrderConfirmation";
 
 const router = createBrowserRouter([
   { element: <App />,
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     {path: "product/:id", element: <Product />},
     {path: "/cart", element: <Cart />},
     {path: "checkout", element: <Checkout />},
-    {path: "oder/:oderId/confirmation", element: <OderConfirmation />},
+    {path: "order/:orderId/confirmation", element: <OrderConfirmation />},
 
   ],
   },

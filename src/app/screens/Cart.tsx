@@ -6,9 +6,19 @@ const sum = (xs: number[]) => xs.reduce((a, b) => a + b, 0);
 export default function Cart() {
   const { cart, addToCart, decrement, removeFromCart, clearCart } = useCart();
 
-  if (cart.length === 0) {
-    return <p style={{ padding: 16 }}>Your cart is empty.</p>;
-  }
+ if (cart.length === 0) {
+  return (
+    <div className="space-y-3">
+      <h1 className="text-2xl md:text-3xl font-semibold">Your Cart</h1>
+      <div className="grid place-items-center h-40 rounded-xl border">
+        <p className="text-gray-700">Your cart is empty.</p>
+      </div>
+      <a href="/" className="inline-block px-4 py-2 rounded-lg bg-sky-600 text-white text-sm font-semibold">
+        Continue shopping
+      </a>
+    </div>
+  );
+}
 
   const subtotal = sum(cart.map((i) => i.price * i.qty));
   const shipping = subtotal > 5000 ? 0 : 499;              // free over $50

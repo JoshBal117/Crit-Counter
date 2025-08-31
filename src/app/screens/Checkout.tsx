@@ -2,6 +2,7 @@ import {useMemo, useState } from "react";
 import type { FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../cart/useCart";
+import {Link} from "react-router-dom";
 
 const money = (c: number) => `$${(c / 100).toFixed(2)}`;
 
@@ -146,13 +147,14 @@ export default function Checkout() {
           </section>
 
           <div className="flex gap-2">
-            <a href="/cart" className="px-4 py-3 rounded-lg bg-gray-200 text-sm">Back to Cart</a>
-            <button
+                        <Link to="/cart" className="px-4 py-3 rounded-lg bg-gray-200 text-sm">
+                            Back to Cart
+                        </Link>
+                    <button
               type="submit"
-              className="px-4 py-3 rounded-lg bg-rose-600 text-white font-semibold text-sm hover:bg-rose-700"
-            >
-              Place Order
-            </button>
+              className="px-4 py-3 rounded-lg bg-rose-600 text-white font-semibold text-sm hover:bg-rose-700">
+                         Place Order
+                    </button>
           </div>
         </form>
 

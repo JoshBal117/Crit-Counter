@@ -1,4 +1,5 @@
 import { useCart } from "../cart/useCart";
+import {Link} from "react-router-dom";
 
 const money = (c: number) => `$${(c / 100).toFixed(2)}`;
 const sum = (xs: number[]) => xs.reduce((a, b) => a + b, 0);
@@ -110,9 +111,10 @@ export default function Cart() {
             <button onClick={clearCart} className="px-3 py-2 rounded bg-gray-200 text-sm">
               Clear Cart
             </button>
-            <a href="/checkout" className="px-3 py-2 rounded bg-rose-600 text-white text-sm">
-              Checkout
-            </a>
+            <Link
+                 to="/checkout"className="px-3 py-2 rounded bg-rose-600 text-white text-sm">
+                            Checkout
+            </Link>
           </div>
         </aside>
       </div>

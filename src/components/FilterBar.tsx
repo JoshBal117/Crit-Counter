@@ -13,7 +13,7 @@ const CATS = [
   { value: "", label: "All categories" },
   { value: "tcg", label: "Trading Cards" },
   { value: "rpg", label: "RPG" },
-  { value: "miniaures", label: "Miniatures" },
+  { value: "miniature", label: "Miniature" },
   { value: "dice", label: "Dice" },
   { value: "boardgame", label: "Board Games" },
   { value: "accessories", label: "Accessories" },

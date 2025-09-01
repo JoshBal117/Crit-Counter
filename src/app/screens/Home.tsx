@@ -72,7 +72,7 @@ export default function Home() {
       ) : (
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {products.map((p) => (
+        {filtered.map((p) => (
           <Link key={p.id} to={`/product/${p.id}`} state={{ product: p }} className="block">
             <ProductCard name={p.name} price={p.price} image={p.image} tags={p.tags} />
           </Link>

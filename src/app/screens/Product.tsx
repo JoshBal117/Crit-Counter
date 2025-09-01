@@ -5,15 +5,12 @@ import { getProductById, type Product as ProductType } from "../data/Product";
 const money = (c: number) => `$${(c / 100).toFixed(2)}`;
 
 export default function Product() {
-  // If your route is /product/:id, help TS know id is a string
   const { id } = useParams<{ id: string }>();
   const { addToCart } = useCart();
 
-  // Don't over-type useLocation; just read optional state safely
   const loc = useLocation() as { state?: { product?: ProductType } };
   const maybeProduct = loc.state?.product ?? getProductById(id);
-
-  // Guard early
+  
   if (!maybeProduct) {
     return (
       <div className="p-4 max-w-3xl mx-auto">

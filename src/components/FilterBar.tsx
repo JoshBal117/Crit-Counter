@@ -13,9 +13,9 @@ const CATS = [
   { value: "", label: "All categories" },
   { value: "tcg", label: "Trading Cards" },
   { value: "rpg", label: "RPG" },
-  { value: "minis", label: "Miniatures" },
+  { value: "miniaures", label: "Miniatures" },
   { value: "dice", label: "Dice" },
-  { value: "board", label: "Board Games" },
+  { value: "boardgame", label: "Board Games" },
   { value: "accessories", label: "Accessories" },
   { value: "terrain", label: "Terrain" },
 ];

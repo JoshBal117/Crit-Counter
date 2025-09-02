@@ -10,7 +10,7 @@ export default function Product() {
 
   const loc = useLocation() as { state?: { product?: ProductType } };
   const maybeProduct = loc.state?.product ?? getProductById(id);
-  
+
   if (!maybeProduct) {
     return (
       <div className="p-4 max-w-3xl mx-auto">
@@ -23,7 +23,7 @@ export default function Product() {
     );
   }
 
-  // ✅ From here on TS knows this is NOT undefined
+  
   const product = maybeProduct;
 
   const handleAddToCart = () => {
@@ -36,7 +36,7 @@ export default function Product() {
   };
 
   return (
-    <div className="p-4 max-w-5xl mx-auto">
+    <div className="p-4 pb-24 md:pb-4 max-w-5xl mx-auto">
       <Link to="/" className="inline-block py-2 text-sky-600 hover:underline">← Back to shop</Link>
 
       <div className="grid gap-4 md:grid-cols-2">
@@ -63,6 +63,7 @@ export default function Product() {
             </div>
           )}
 
+            <div></div>
           <button
             onClick={handleAddToCart}
             aria-label="Add product to cart"
@@ -71,6 +72,17 @@ export default function Product() {
             Add to cart
           </button>
         </div>
+      </div>
+
+      <div className="fixed inset-x-0 bottom-0 md:hidden border-t bg-white/95 backdrop-blur p-3"
+      style={{ paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 12px)"}}
+      role="region"
+      aria-label="Quick add to cart"
+      >
+            <button onClick={handleAddToCart}
+            className="w-full h-12 rounded-xl br-rose 600 text-white font-bold hover:bg-rose-700 active:translate-y-px">
+                Add to cart
+            </button>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ export type Product = {
     tags?: string[];
 };
 
-export const products: Product[] = [
+export const  curated: Product[] = [
     { id: "1",  name: "Dungeons & Dragons Player's Handbook", price: 4999, image: "/images/rpg/core/wotc-phb-2024.jpg",category: "rpg", tags: ["RPG","Core Rulebook"] },
   { id: "2",  name: "Pathfinder Core Rulebook 2nd Edition", price: 5999, image: "/images/rpg/core/pathfinder-2nd-edition.png", category: "rpg", tags: ["RPG","Core Rulebook"] },
   { id: "3",  name: "Warhammer 40K Starter Set",            price:12499, image: "/images/miniatures/w40k/warhammer-starter-set.jpg", category: "miniature", tags: ["Miniature","Warhammer"] },
@@ -20,7 +20,28 @@ export const products: Product[] = [
   { id: "10", name: "Arcane Tinmen Dragon Matte Emerald Sleeves- Dragon Shield", price: 499, image: "/images/decksleeves/color/green-drgn-sleeves.jpg", category: "accessories", tags: ["Accessories","Card Sleeves"]}
 ];
 
+import {genDice} from "./generate"
+
+const diceGenerated = genDice([
+    "Amethyst", "Azure", "Crimson", "Emerald", "Obsidian", "Pearl", "Rose", "Sunset", "Teal", "Violet", "Ice Blue", "Royal Purple",
+    "Matte Black",
+]);
+
+export const products: Product[] = [
+    ...curated,
+    ...diceGenerated,
+]
+
+
 export function getProductById(id: string | undefined) {
     if (!id) return undefined;
     return products.find(p => p.id === id);
+}
+
+if(import.meta.env.DEV) {
+    const ids = new Set<string>();
+    for (const p of products) {
+        if(ids.has(p.id)) console.warn("Duplicate product id : ", p.id, p.name);
+        ids.add(p.id);
+    }
 }

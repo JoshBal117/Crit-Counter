@@ -65,7 +65,7 @@ export default function Checkout() {
 
     // In real app, submit to backend here...
     clearCart();
-    navigate(`/oder/${orderId}/confirmation`, {
+    navigate(`/order/${orderId}/confirmation`, {
         replace: true, 
         state: {
             orderId,

@@ -68,3 +68,24 @@ export function brandBlocks(
             tags: it.tags
         }));
     }
+
+   type DeckVariant = { slug: string; label: string; price?: number; extraTags?: string[] };
+
+// helper that flattens to TcgEntry[]; Product stays unchanged
+export function deckVariantsAsEntries(
+  brand: TcgBrand,
+  baseFolder: string,
+  set: string,
+  kind: TcgKind,
+  fallbackPrice: number,
+  variants: DeckVariant[]
+): TcgEntry[] {
+  return variants.map(v => ({
+    brand,
+    set: `${set} — ${v.label}`,  // puts variant in the product name
+    kind,
+    price: v.price ?? fallbackPrice,
+    imagePath: `${baseFolder}/${v.slug}`,
+    tags: v.extraTags ? [v.label, ...v.extraTags] : [v.label],
+  }));
+}

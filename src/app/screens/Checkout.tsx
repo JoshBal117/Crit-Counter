@@ -63,6 +63,9 @@ export default function Checkout() {
     const orderId = genOrderId();
     const tracking = genUpsTracking();
 
+
+const items = cart.map(i => ({ id: i.id, name: i.name, image: i.image, price: i.price, qty: i.qty }));
+
     // In real app, submit to backend here...
     clearCart();
     navigate(`/order/${orderId}/confirmation`, {
@@ -71,7 +74,11 @@ export default function Checkout() {
             orderId,
             tracking,
             email,
-            total, 
+            total,
+            subtotal,
+            shipping,
+            tax,
+            items, 
             shipTo: {name, address, city, stateProv, zip},
         },
     }); 

@@ -4,7 +4,11 @@ type State = {
     orderId?: string;
     tracking?: string;
     email?: string;
+    subtotal?: number;
+    shipping?: number;
+    tax?: number;
     total?: number;
+    items?: { id: string; name: string; image: string; price: number; qty: number }[];
     shipTo?: {
         name: string;
         address: string;
@@ -29,11 +33,41 @@ type State = {
           Your order <strong>{s.orderId ?? orderId}</strong> has been placed.
         </div>
 
-        <div className="mt-3 grid gap-2 sm:grid-cols-2">
+            {!!s.items?.length && (
+          <div className="space-y-2">
+            {s.items.map(it => (
+              <div key={it.id} className="flex items-center gap-3">
+                <img
+                  src={it.image}
+                  alt={it.name}
+                  className="w-12 h-12 object-cover rounded"
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).src = "/images/placeholder.jpg"; }}
+                />
+                <div className="flex-1">
+                  <div className="font-medium">{it.name}</div>
+                  <div className="text-sm text-gray-600">
+                    {money(it.price)} × {it.qty}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+         <div className="grid gap-2 sm:grid-cols-2">
           <div className="rounded-lg border p-3">
             <div className="font-semibold mb-1">Receipt</div>
-            <div>Total Paid: {money(s.total ?? 0)}</div>
-            <div>Sent to: {s.email ?? "—"}</div>
+            {!!(s.subtotal !== undefined) && (
+              <>
+                <div className="flex justify-between text-sm"><span>Subtotal</span><span>{money(s.subtotal)}</span></div>
+                <div className="flex justify-between text-sm"><span>Shipping</span><span>{s.shipping ? money(s.shipping) : "free"}</span></div>
+                <div className="flex justify-between text-sm"><span>Tax</span><span>{money(s.tax ?? 0)}</span></div>
+              </>
+            )}
+            <div className="flex justify-between font-semibold pt-2 mt-2 border-t">
+              <span>Total Paid</span><span>{money(s.total ?? 0)}</span>
+            </div>
+            <div className="mt-1 text-sm text-gray-700">Sent to: {s.email ?? "—"}</div>
           </div>
 
           <div className="rounded-lg border p-3">

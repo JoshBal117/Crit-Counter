@@ -49,14 +49,14 @@ const yugioh = genTcg([
     "Structure Deck",      // kind
     11.99,                 // default price
     [
-      { slug: "yugi-muto",                 label: "Yugi Muto" },
-      { slug: "seto-kaiba",                label: "Seto Kaiba" },
-      { slug: "blue-eyes-white-dragon",    label: "Blue-Eyes White Dragon" },
-      { slug: "legend-of-the-crystal-beast", label: "Legend of the Crystal Beast" },
-      { slug: "beware-of-traptrix",        label: "Beware of Traptrix" },
-      { slug: "fire-kings",                label: "Fire Kings" },
-      { slug: "the-crimson-king",          label: "The Crimson King" },
-      { slug: "sacred-beasts",             label: "Sacred Beasts" },
+      { slug: "yugi-muto",                   label: "Yugi Muto",                   price: 65.99},
+      { slug: "seto-kaiba",                  label: "Seto Kaiba",                  price: 65.99},
+      { slug: "blue-eyes-white-dragon",      label: "Blue-Eyes White Dragon",      price: 19.99},
+      { slug: "legend-of-the-crystal-beast", label: "Legend of the Crystal Beast", price: 24.99},
+      { slug: "beware-of-traptrix",          label: "Beware of Traptrix",          price: 15.99},
+      { slug: "fire-kings",                  label: "Fire Kings",                  price: 11.99},
+      { slug: "the-crimson-king",            label: "The Crimson King",            price: 25.99},
+      { slug: "sacred-beasts",               label: "Sacred Beasts",               price: 22.99},
     ]
   ),
 ]);

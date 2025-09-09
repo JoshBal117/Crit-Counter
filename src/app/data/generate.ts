@@ -24,7 +24,7 @@ export function genDice(colors: string[], basePrice = 14.99): Product[] {
 }
 
 
-export type TcgBrand = "MTG" | "Yu-Gi-Oh" | "Pokemon" | "Lorcana";
+export type TcgBrand = "MTG" | "Yu-Gi-Oh!" | "Pokemon" | "Lorcana";
 export type TcgKind = 
     | "Booster Pack"
     | "Booster Box"
@@ -54,20 +54,20 @@ export function genTcg(entries: TcgEntry[]): Product[] {
     }));
 }
 
-export function brandBlocks(
-    brand: TcgBrand,
-    folder: string,
-    items: Array<{ set:string; kind: TcgKind; price: number; file:string; tags?: string[]}>
-    ): TcgEntry[] {
-        return items.map((it) => ({
-            brand,
-            set: it.set,
-            kind: it.kind,
-            price: it.price,
-            imagePath: `${folder}/${it.file}`,
-            tags: it.tags
-        }));
-    }
+export function deckVariants(
+  set: string,           // e.g., "Modern Horizons 3" OR "Structure Deck"
+  kind: TcgKind,         // e.g., "Commander Deck" / "Starter Deck" / "Structure Deck"
+  defaultPrice: number,  // dollars; can be overridden per variant
+  variants: Array<{ slug: string; label: string; price?: number; extraTags?: string[] }>
+): Array<{ set: string; kind: TcgKind; price: number; file: string; tags?: string[] }> {
+  return variants.map(v => ({
+    set,
+    kind,
+    price: v.price ?? defaultPrice,
+    file: v.slug,                          // becomes <folder>/<slug>.jpg
+    tags: v.extraTags ? [v.label, ...v.extraTags] : [v.label],
+  }));
+}
 
    type DeckVariant = { slug: string; label: string; price?: number; extraTags?: string[] };
 
@@ -75,17 +75,32 @@ export function brandBlocks(
 export function deckVariantsAsEntries(
   brand: TcgBrand,
   baseFolder: string,
-  set: string,
+  family: string,
   kind: TcgKind,
   fallbackPrice: number,
   variants: DeckVariant[]
 ): TcgEntry[] {
   return variants.map(v => ({
     brand,
-    set: `${set} — ${v.label}`,  // puts variant in the product name
+    set: `${family} — ${v.label}`,  // puts variant in the product name
     kind,
     price: v.price ?? fallbackPrice,
     imagePath: `${baseFolder}/${v.slug}`,
-    tags: v.extraTags ? [v.label, ...v.extraTags] : [v.label],
+    tags: v.extraTags ? [family, v.label, ...v.extraTags] : [v.label],
+  }));
+}
+
+export function brandBlocks(
+  brand: TcgBrand,
+  folder: string,
+  items: Array<{ set: string; kind: TcgKind; price: number; file: string; tags?: string[] }>
+): TcgEntry[] {
+  return items.map(it => ({
+    brand,
+    set: it.set,
+    kind: it.kind,
+    price: it.price,
+    imagePath: `${folder}/${it.file}`,
+    tags: it.tags,
   }));
 }

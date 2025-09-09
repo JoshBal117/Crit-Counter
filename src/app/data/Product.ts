@@ -20,7 +20,7 @@ export const  curated: Product[] = [
   { id: "10", name: "Arcane Tinmen Dragon Matte Emerald Sleeves- Dragon Shield", price: 499, image: "/images/decksleeves/color/green-drgn-sleeves.jpg", category: "accessories", tags: ["Accessories","Card Sleeves"]}
 ];
 
-import {genDice, genTcg, brandBlocks} from "./generate"
+import {genDice, genTcg, brandBlocks, deckVariantsAsEntries} from "./generate"
 
 const diceGenerated = genDice([
     "Amethyst", "Azure", "Crimson", "Emerald", "Obsidian", "Pearl", "Rose", "Sunset", "Teal", "Violet", "Ice Blue", "Royal Purple",
@@ -36,11 +36,29 @@ const mtg = genTcg([
 ]);
 
 const yugioh = genTcg([
-    ...brandBlocks("Yu-Gi-Oh","yugioh/25th",[
+    ...brandBlocks("Yu-Gi-Oh!","yugioh/25th",[
         {set: "25th Anniversary", kind: "Booster Pack", price: 4.99, file: "booster-pack" },
         {set: "25th Anniversary", kind: "Booster Box", price: 64.99, file: "booster-box" },
         {set: "25th Anniversary", kind: "Structure Deck", price: 34.99, file: "structure-deck" },
 ]),
+
+    ...deckVariantsAsEntries(
+    "Yu-Gi-Oh!",
+    "yugioh/structure",    // images base folder
+    "Structure Deck",      // family name
+    "Structure Deck",      // kind
+    11.99,                 // default price
+    [
+      { slug: "yugi-muto",                 label: "Yugi Muto" },
+      { slug: "seto-kaiba",                label: "Seto Kaiba" },
+      { slug: "blue-eyes-white-dragon",    label: "Blue-Eyes White Dragon" },
+      { slug: "legend-of-the-crystal-beast", label: "Legend of the Crystal Beast" },
+      { slug: "beware-of-traptrix",        label: "Beware of Traptrix" },
+      { slug: "fire-kings",                label: "Fire Kings" },
+      { slug: "the-crimson-king",          label: "The Crimson King" },
+      { slug: "sacred-beasts",             label: "Sacred Beasts" },
+    ]
+  ),
 ]);
 
 const pokemon = genTcg([

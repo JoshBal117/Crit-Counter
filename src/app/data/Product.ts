@@ -33,6 +33,21 @@ const mtg = genTcg([
         {set: "Modern Horizons 3", kind: "Booster Box", price: 175.99, file: 'booster-box'},
         {set: "Modern Horizons 3", kind: "Commander Deck", price: 45.99, file: "commander-deck-grave"},
     ]),
+
+    ...deckVariantsAsEntries( //the first of multiple factory functions
+        "MTG", 
+        "mtg/mh3/commander",
+        "Modern Horizons 3",
+        "Commander Deck",
+        44.99,
+        [
+            {slug: "eldrazi-incursion",    label: "Eldrazi Incursion",  price: 49.99},
+            {slug: "graveyard-overdrive", label: "Graveyard Overdrive", price: 52.99},
+            {slug: "creative-energy",     label: "Creative Energy",     price: 45.99},
+            {slug: "tricky-terrain",      label: "Tricky Terrain",      price: 48.99,}
+
+        ]
+    ),
 ]);
 
 const yugioh = genTcg([
@@ -42,7 +57,7 @@ const yugioh = genTcg([
         {set: "25th Anniversary", kind: "Structure Deck", price: 34.99, file: "structure-deck" },
 ]),
 
-    ...deckVariantsAsEntries(
+    ...deckVariantsAsEntries( //another factory function
     "Yu-Gi-Oh!",
     "yugioh/structure",    // images base folder
     "Structure Deck",      // family name
@@ -67,14 +82,57 @@ const pokemon = genTcg([
         { set: "Scarlet Violet", kind: "Booster Box", price:68.99, file: "booster-box" },
         { set: "Scarlet Violet", kind: "Elite Trainer Box", price:178.99, file: "elite-trainer-box" },
     ]),
+
+    ...deckVariantsAsEntries(  //factory function
+            "Pokemon",
+            "pokemon/battle-decks",
+            "Battle Deck",
+            "Starter Deck",
+            12.99,
+            [
+                {slug: "zapdos-ex",    label: "Zapdos EX",    price: 16.99},
+                {slug: "charizard-ex", label: "Charizard EX", price: 69.99},
+                {slug: "lucario-ex",  label: "Lucario EX",   price: 25.99},
+            ]
+    )
 ]);
 
 const lorcana =genTcg([
     ...brandBlocks("Lorcana", "lorcana/the-first-chapter", [
-        { set: "The First Chapter", kind: "Booster Pack", price: 4.99, file: "booster-pack"},
-        { set: "The First Chapter", kind: "Booster Box", price: 65.99, file: "booster-box"},
-        { set: "The First Chapter", kind: "Starter Deck", price: 14.99, file: "starter-deck"},
+        { set: "The First Chapter", kind: "Booster Pack", price: 4.99,         file: "booster-pack"  },
+        { set: "The First Chapter", kind: "Box Set",  price: 65.99,            file: "box-set"       },
+        { set: "The First Chapter", kind: "Gift Set", price: 165.99,           file: "gift-set"      },
+        { set: "The First Chapter", kind: "Illumineer's Trove", price: 283.99, file: "trove"         },
     ]),
+    ...deckVariantsAsEntries( //factory function
+        "Lorcana",
+        "lorcana/the-first-chapter/starters",
+        "The First Chapter",
+        "Starter Deck",
+        16.99,
+        [
+            {slug: "amber-amythest", label: "Amber Amythest"},
+            {slug: "sapphire-steel", label: "Sapphire Steel"},
+            {slug: "emerald-ruby",   label: "Emerald Ruby"  },
+        ]
+    ),
+    ...brandBlocks("Lorcana", "lorcana/rise-of-the-floodborn", [
+    { set: "Rise of the Floodborn", kind: "Booster Pack",  price: 5.99,  file: "rise-booster-pack" },
+    { set: "Rise of the Floodborn", kind: "Gift Set",      price: 124.99, file: "rise-gift-set"     },
+    { set: "Rise of the Floodborn", kind: "Illumineer's Trove", price: 249.99, file: "rise-trove"  },
+  ]),
+  ...deckVariantsAsEntries(
+    "Lorcana",
+    "lorcana/rise-of-the-floodborn/starters",
+    "Rise of the Floodborn",
+    "Starter Deck",
+    16.99,
+        [
+            {slug: "amber-sapphire", label: "Amber Sapphire"},
+            {slug: "amythest-steel", label: "Amythest Steel"},
+        ]
+  )
+    
 ]);
 
 export const products: Product[] = [

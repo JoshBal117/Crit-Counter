@@ -20,6 +20,10 @@ export const  curated: Product[] = [
   { id: "10", name: "Arcane Tinmen Dragon Matte Emerald Sleeves- Dragon Shield", price: 499, image: "/images/decksleeves/color/green-drgn-sleeves.jpg", category: "accessories", tags: ["Accessories","Card Sleeves"]}
 ];
 
+const $ = (n: number) => Math.round(n*100);
+
+const img = (p:string) => `/images/${p}`;
+
 import {genDice, genTcg, buildTcgEntries, type TcgBrandConfig} from "./generate"
 
 const diceGenerated = genDice([
@@ -139,6 +143,26 @@ const tcgConfig: TcgBrandConfig[] = [
     ],
   },
 ];
+
+const rpgBooks: Product[] = [
+    { id: "rpg-dnd-phb-2024", name: "D&D Player's Handbook (2024)", price: $(49.99), image: img("rpg/dnd/phb-2024.jpg"), category: "rpg", tags: ["RPG","D&D","Core Rulebook"] },
+  { id: "rpg-dnd-dmg-2024", name: "D&D Dungeon Master's Guide (2024)", price: $(49.99), image: img("rpg/dnd/dmg-2024.jpg"), category: "rpg", tags: ["RPG","D&D","Core Rulebook"] },
+  { id: "rpg-dnd-mm-2024",  name: "D&D Monster Manual (2024)", price: $(49.99), image: img("rpg/dnd/monster-manual-2024.jpg"), category: "rpg", tags: ["RPG","D&D","Bestiary"] },
+  { id: "rpg-dnd-xge",      name: "Xanathar’s Guide to Everything", price: $(39.95), image: img("rpg/dnd/xanathars-guide.jpg"), category: "rpg", tags: ["RPG","D&D","Supplement"] },
+  { id: "rpg-dnd-tce",      name: "Tasha’s Cauldron of Everything", price: $(39.95), image: img("rpg/dnd/tashas-cauldron.jpg"), category: "rpg", tags: ["RPG","D&D","Supplement"] },
+
+  // ---- Pathfinder 2e Core
+  { id: "rpg-pf2-core",     name: "Pathfinder 2e Core Rulebook", price: $(59.99), image: img("rpg/pathfinder/pf2-core.jpg"), category: "rpg", tags: ["RPG","Pathfinder","Core Rulebook"] },
+  { id: "rpg-pf2-bestiary", name: "Pathfinder 2e Bestiary",      price: $(49.99), image: img("rpg/pathfinder/pf2-bestiary.jpg"), category: "rpg", tags: ["RPG","Pathfinder","Bestiary"] },
+  { id: "rpg-pf2-apg",      name: "Pathfinder 2e Advanced Player’s Guide", price: $(49.99), image: img("rpg/pathfinder/pf2-apg.jpg"), category: "rpg", tags: ["RPG","Pathfinder","Supplement"] },
+  { id: "rpg-pf2-gmg",      name: "Pathfinder 2e Gamemastery Guide",       price: $(44.99), image: img("rpg/pathfinder/pf2-gmg.jpg"), category: "rpg", tags: ["RPG","Pathfinder","GM"] },
+
+  // ---- Star Wars RPG (Fantasy Flight / Edge Studio lines)
+  { id: "rpg-sw-eote",      name: "Star Wars: Edge of the Empire Core Rulebook", price: $(59.95), image: img("rpg/star-wars/eote-core.jpg"), category: "rpg", tags: ["RPG","Star Wars","Core Rulebook"] },
+  { id: "rpg-sw-aor",       name: "Star Wars: Age of Rebellion Core Rulebook",  price: $(59.95), image: img("rpg/star-wars/aor-core.jpg"), category: "rpg", tags: ["RPG","Star Wars","Core Rulebook"] },
+  { id: "rpg-sw-fad",       name: "Star Wars: Force and Destiny Core Rulebook", price: $(59.95), image: img("rpg/star-wars/fad-core.jpg"), category: "rpg", tags: ["RPG","Star Wars","Core Rulebook"] },
+];
+
 
 // Build entries once, then convert to Product[]
 const tcgProducts = genTcg(buildTcgEntries(tcgConfig));

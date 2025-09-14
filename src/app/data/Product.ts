@@ -156,6 +156,7 @@ const rpgBooks: Product[] = [
   { id: "rpg-pf2-bestiary", name: "Pathfinder 2e Bestiary",      price: $(49.99), image: img("rpg/pathfinder/pf2-bestiary.jpg"), category: "rpg", tags: ["RPG","Pathfinder","Bestiary"] },
   { id: "rpg-pf2-apg",      name: "Pathfinder 2e Advanced Player’s Guide", price: $(49.99), image: img("rpg/pathfinder/pf2-apg.jpg"), category: "rpg", tags: ["RPG","Pathfinder","Supplement"] },
   { id: "rpg-pf2-gmg",      name: "Pathfinder 2e Gamemastery Guide",       price: $(44.99), image: img("rpg/pathfinder/pf2-gmg.jpg"), category: "rpg", tags: ["RPG","Pathfinder","GM"] },
+  { id: "rpg-pf2-gmc",    name: "Pathfinder 2e GM Core",                   price: $(59.99), image: img("rpg/pathfinder/pf2-gmcore.jpg"), category: "rpg", tags: ["RPG","Pathfinder","GM"] },
 
   // ---- Star Wars RPG (Fantasy Flight / Edge Studio lines)
   { id: "rpg-sw-eote",      name: "Star Wars: Edge of the Empire Core Rulebook", price: $(59.95), image: img("rpg/star-wars/eote-core.jpg"), category: "rpg", tags: ["RPG","Star Wars","Core Rulebook"] },
@@ -172,6 +173,7 @@ export const products: Product[] = [
   ...curated,
   ...diceGenerated,
   ...tcgProducts,
+  ...rpgBooks,
 ];
 
 // Lookup helper

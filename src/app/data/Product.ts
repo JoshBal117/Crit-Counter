@@ -8,8 +8,6 @@ export type Product = {
 };
 
 export const  curated: Product[] = [
-    { id: "1",  name: "Dungeons & Dragons Player's Handbook", price: 4999, image: "/images/rpg/core/wotc-phb-2024.jpg",category: "rpg", tags: ["RPG","Core Rulebook"] },
-  { id: "2",  name: "Pathfinder Core Rulebook 2nd Edition", price: 5999, image: "/images/rpg/core/pathfinder-2nd-edition.png", category: "rpg", tags: ["RPG","Core Rulebook"] },
   { id: "3",  name: "Warhammer 40K Starter Set",            price:12499, image: "/images/miniatures/w40k/warhammer-starter-set.jpg", category: "miniature", tags: ["Miniature","Warhammer"] },
   { id: "4",  name: "Magic: The Gathering Final Fantasy Booster Pack", price: 799, image: "/images/tcg/mtg/ff/ff7-booster-pack.jpg", category: "tcg", tags: ["Card Game","Magic"] },
   { id: "5",  name: "Yu-Gi-Oh! Blue-Eyes White Destiny Structure Deck", price: 999, image: "/images/tcg/yugioh/be-wd-sdeck.jpg", category: "tcg", tags: ["Card Game","Yu-Gi-Oh"] },
@@ -152,11 +150,11 @@ const rpgBooks: Product[] = [
   { id: "rpg-dnd-tce",      name: "Tasha’s Cauldron of Everything", price: $(39.95), image: img("rpg/dnd/tashas-cauldron.jpg"), category: "rpg", tags: ["RPG","D&D","Supplement"] },
 
   // ---- Pathfinder 2e Core
-  { id: "rpg-pf2-core",     name: "Pathfinder 2e Core Rulebook", price: $(59.99), image: img("rpg/pathfinder/pf2-core.jpg"), category: "rpg", tags: ["RPG","Pathfinder","Core Rulebook"] },
-  { id: "rpg-pf2-bestiary", name: "Pathfinder 2e Bestiary",      price: $(49.99), image: img("rpg/pathfinder/pf2-bestiary.jpg"), category: "rpg", tags: ["RPG","Pathfinder","Bestiary"] },
-  { id: "rpg-pf2-apg",      name: "Pathfinder 2e Advanced Player’s Guide", price: $(49.99), image: img("rpg/pathfinder/pf2-apg.jpg"), category: "rpg", tags: ["RPG","Pathfinder","Supplement"] },
-  { id: "rpg-pf2-gmg",      name: "Pathfinder 2e Gamemastery Guide",       price: $(44.99), image: img("rpg/pathfinder/pf2-gmg.jpg"), category: "rpg", tags: ["RPG","Pathfinder","GM"] },
-  { id: "rpg-pf2-gmc",    name: "Pathfinder 2e GM Core",                   price: $(59.99), image: img("rpg/pathfinder/pf2-gmcore.jpg"), category: "rpg", tags: ["RPG","Pathfinder","GM"] },
+  { id: "rpg-pf2-core",     name: "Pathfinder 2e Core Rulebook", price: $(59.99), image: img("rpg/pathfinder/pf2/pf2-core.jpg"), category: "rpg", tags: ["RPG","Pathfinder","Core Rulebook"] },
+  { id: "rpg-pf2-bestiary", name: "Pathfinder 2e Bestiary",      price: $(49.99), image: img("rpg/pathfinder/pf2/pf2-bestiary.jpg"), category: "rpg", tags: ["RPG","Pathfinder","Bestiary"] },
+  { id: "rpg-pf2-apg",      name: "Pathfinder 2e Advanced Player’s Guide", price: $(49.99), image: img("rpg/pathfinder/pf2/pf2-apg.jpg"), category: "rpg", tags: ["RPG","Pathfinder","Supplement"] },
+  { id: "rpg-pf2-gmg",      name: "Pathfinder 2e Gamemastery Guide",       price: $(44.99), image: img("rpg/pathfinder/pf2/pf2-gmg.jpg"), category: "rpg", tags: ["RPG","Pathfinder","GM"] },
+  { id: "rpg-pf2-gmc",    name: "Pathfinder 2e GM Core",                   price: $(59.99), image: img("rpg/pathfinder/pf2/pf2-gmcore.jpg"), category: "rpg", tags: ["RPG","Pathfinder","GM"] },
 
   // ---- Star Wars RPG (Fantasy Flight / Edge Studio lines)
   { id: "rpg-sw-eote",      name: "Star Wars: Edge of the Empire Core Rulebook", price: $(59.95), image: img("rpg/star-wars/eote-core.jpg"), category: "rpg", tags: ["RPG","Star Wars","Core Rulebook"] },

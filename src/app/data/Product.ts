@@ -160,6 +160,10 @@ const rpgBooks: Product[] = [
   { id: "rpg-sw-eote",      name: "Star Wars: Edge of the Empire Core Rulebook", price: $(59.95), image: img("rpg/star-wars/eote-core.jpg"), category: "rpg", tags: ["RPG","Star Wars","Core Rulebook"] },
   { id: "rpg-sw-aor",       name: "Star Wars: Age of Rebellion Core Rulebook",  price: $(59.95), image: img("rpg/star-wars/aor-core.jpg"), category: "rpg", tags: ["RPG","Star Wars","Core Rulebook"] },
   { id: "rpg-sw-fad",       name: "Star Wars: Force and Destiny Core Rulebook", price: $(59.95), image: img("rpg/star-wars/fad-core.jpg"), category: "rpg", tags: ["RPG","Star Wars","Core Rulebook"] },
+  { id: "rpg-sw-rots",      name: "Star Wars: Rise of the Separatists", price: $(49.95), image: img("rpg/star-wars/rots-source.jpg"), category: "rpg", tags: ["RPG","Star Wars","Adventure Module"] },
+  { id: "rpg-sw-up",     name: "Star Wars: Unlimited Power", price: $(49.95), image: img("rpg/star-wars/up-source.jpg"), category: "rpg", tags: ["RPG","Star Wars","Supplement"] },
+  { id: "rpg-sw-sof",     name: "Star Wars: Suns of Fortune", price: $(49.95), image: img("rpg/star-wars/sof-source.jpg"), category: "rpg", tags: ["RPG","Star Wars","Supplement"] },
+  { id: "rpg-sw-sot",     name: "Star Wars: Stay on Target", price: $(24.95), image: img("rpg/star-wars/sot-source.jpg"), category: "rpg", tags: ["RPG","Star Wars","Supplement"] },
 ];
 
 

@@ -63,7 +63,6 @@ export default function Product() {
             </div>
           )}
 
-            <div></div>
           <button
             onClick={handleAddToCart}
             aria-label="Add product to cart"
@@ -74,15 +73,18 @@ export default function Product() {
         </div>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 md:hidden border-t bg-white/95 backdrop-blur p-3"
-      style={{ paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 12px)"}}
-      role="region"
-      aria-label="Quick add to cart"
+     <div
+        className="fixed inset-x-0 bottom-0 md:hidden border-t bg-white/95 backdrop-blur p-3"
+        style={{ paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 12px)" }}
+        role="region"
+        aria-label="Quick add to cart"
       >
-            <button onClick={handleAddToCart}
-            className="w-full h-12 rounded-xl br-rose 600 text-white font-bold hover:bg-rose-700 active:translate-y-px">
-                Add to cart
-            </button>
+             <button
+          onClick={handleAddToCart}
+          className="w-full h-12 rounded-xl bg-rose-600 text-white font-bold hover:bg-rose-700 active:translate-y-px"
+        >
+          Add to cart
+        </button>
       </div>
     </div>
   );

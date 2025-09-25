@@ -1,5 +1,6 @@
-import { useCart } from "../cart/useCart";
 import {Link} from "react-router-dom";
+import { useCart } from "../cart/useCart";
+
 
 const money = (c: number) => `$${(c / 100).toFixed(2)}`;
 const sum = (xs: number[]) => xs.reduce((a, b) => a + b, 0);
@@ -8,22 +9,25 @@ export default function Cart() {
   const { cart, addToCart, decrement, removeFromCart, clearCart } = useCart();
 
  if (cart.length === 0) {
-  return (
-    <div className="space-y-3">
-      <h1 className="text-2xl md:text-3xl font-semibold">Your Cart</h1>
-      <div className="grid place-items-center h-40 rounded-xl border">
-        <p className="text-gray-700">Your cart is empty.</p>
+    return (
+      <div className="space-y-3">
+        <h1 className="text-2xl md:text-3xl font-semibold">Your Cart</h1>
+        <div className="grid place-items-center h-40 rounded-xl border">
+          <p className="text-gray-700">Your cart is empty.</p>
+        </div>
+        <Link
+          to="/"
+          className="inline-block px-4 py-2 rounded-lg bg-sky-600 text-white text-sm font-semibold"
+        >
+          Continue shopping
+        </Link>
       </div>
-      <a href="/" className="inline-block px-4 py-2 rounded-lg bg-sky-600 text-white text-sm font-semibold">
-        Continue shopping
-      </a>
-    </div>
   );
 }
 
   const subtotal = sum(cart.map((i) => i.price * i.qty));
-  const shipping = subtotal > 5000 ? 0 : 499;              // free over $50
-  const tax = Math.round((subtotal + shipping) * 0.07);    // 7% on sub+ship
+  const shipping = subtotal > 5000 ? 0 : 499; // free over $50
+  const tax = Math.round((subtotal + shipping) * 0.07); // 7% on sub+ship   // 7% on sub+ship
   const total = subtotal + shipping + tax;
 
   return (
@@ -65,7 +69,7 @@ export default function Cart() {
                   aria-label="decrease quantity"
                   className="w-9 h-9 flex items-center justify-center border border-gray-300 bg-gray-100 rounded hover:bg-gray-200"
                 >
-                  −
+                  -
                 </button>
                 <span className="min-w-[24px] text-center">{item.qty}</span>
                 <button
@@ -106,17 +110,18 @@ export default function Cart() {
             <span>Total</span>
             <span>{money(total)}</span>
           </div>
-
-          <div className="mt-3 flex gap-2">
-            <button onClick={clearCart} className="px-3 py-2 rounded bg-gray-200 text-sm">
-              Clear Cart
-            </button>
-            <Link
-                 to="/checkout"className="px-3 py-2 rounded bg-rose-600 text-white text-sm">
-                            Checkout
-            </Link>
-          </div>
-        </aside>
+                     <div className="mt-3 flex gap-2">
+              <button onClick={clearCart} className="px-3 py-2 rounded bg-gray-200 text-sm">
+                Clear Cart
+              </button>
+              <Link
+                to="/checkout"
+                className="px-3 py-2 rounded bg-rose-600 text-white text-sm"
+              >
+                Checkout
+              </Link>
+            </div>
+          </aside>
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
-import {useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import type { FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../cart/useCart";
-import {Link} from "react-router-dom";
+
 
 const money = (c: number) => `$${(c / 100).toFixed(2)}`;
 
@@ -33,9 +33,12 @@ export default function Checkout() {
         <h1 className="text-2xl md:text-3xl font-semibold">Checkout</h1>
         <div className="rounded-xl border p-6">
           <p>Your cart is empty.</p>
-          <a href="/" className="inline-block mt-3 px-4 py-2 rounded-lg bg-sky-600 text-white text-sm font-semibold">
+           <Link
+            to="/"
+            className="inline-block mt-3 px-4 py-2 rounded-lg bg-sky-600 text-white text-sm font-semibold"
+          >
             Continue shopping
-          </a>
+            </Link>
         </div>
       </div>
     );
@@ -64,30 +67,37 @@ export default function Checkout() {
     const tracking = genUpsTracking();
 
 
-const items = cart.map(i => ({ id: i.id, name: i.name, image: i.image, price: i.price, qty: i.qty }));
+const items = cart.map((i) => ({
+      id: i.id,
+      name: i.name,
+      image: i.image,
+      price: i.price,
+      qty: i.qty,
+    }));
+
 
     // In real app, submit to backend here...
     clearCart();
     navigate(`/order/${orderId}/confirmation`, {
-        replace: true, 
-        state: {
-            orderId,
-            tracking,
-            email,
-            total,
-            subtotal,
-            shipping,
-            tax,
-            items, 
-            shipTo: {name, address, city, stateProv, zip},
-        },
-    }); 
-}
+       replace: true,
+      state: {
+        orderId,
+        tracking,
+        email,
+        total,
+        subtotal,
+        shipping,
+        tax,
+        items,
+        shipTo: { name, address, city, stateProv, zip },
+      },
+    });
+  }
 
-    return(
-        <div className="space-y-4">
-            <h1 className="text2xl md:text-3xl font-semibold">Checkout</h1>
-            {/* grid: form left, summary right (stacks on mobile) */}
+    return (
+    <div className="space-y-4">
+      <h1 className="text-2xl md:text-3xl font-semibold">Checkout</h1>
+      {/* grid: form left, summary right (stacks on mobile) */}
       <div className="grid gap-6 md:grid-cols-3">
         {/* FORM */}
         <form onSubmit={handleSubmit} className="md:col-span-2 space-y-3">
@@ -98,7 +108,9 @@ const items = cart.map(i => ({ id: i.id, name: i.name, image: i.image, price: i.
               <label className="block">
                 <span className="text-sm">Full name</span>
                 <input
-                  value={name} onChange={e => setName(e.target.value)} required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
                   className="mt-1 w-full h-11 px-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-sky-400"
                 />
               </label>
@@ -106,7 +118,10 @@ const items = cart.map(i => ({ id: i.id, name: i.name, image: i.image, price: i.
               <label className="block sm:col-span-2">
                 <span className="text-sm">Email</span>
                 <input
-                  type="email" value={email} onChange={e => setEmail(e.target.value)} required
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                   className="mt-1 w-full h-11 px-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-sky-400"
                 />
               </label>
@@ -114,7 +129,9 @@ const items = cart.map(i => ({ id: i.id, name: i.name, image: i.image, price: i.
               <label className="block sm:col-span-2">
                 <span className="text-sm">Address</span>
                 <input
-                  value={address} onChange={e => setAddress(e.target.value)} required
+                   value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  required
                   className="mt-1 w-full h-11 px-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-sky-400"
                 />
               </label>
@@ -122,7 +139,9 @@ const items = cart.map(i => ({ id: i.id, name: i.name, image: i.image, price: i.
               <label className="block">
                 <span className="text-sm">City</span>
                 <input
-                  value={city} onChange={e => setCity(e.target.value)} required
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  required
                   className="mt-1 w-full h-11 px-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-sky-400"
                 />
               </label>
@@ -130,7 +149,9 @@ const items = cart.map(i => ({ id: i.id, name: i.name, image: i.image, price: i.
               <label className="block">
                 <span className="text-sm">State/Province</span>
                 <input
-                  value={stateProv} onChange={e => setStateProv(e.target.value)} required
+                  value={stateProv}
+                  onChange={(e) => setStateProv(e.target.value)}
+                  required
                   className="mt-1 w-full h-11 px-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-sky-400"
                 />
               </label>
@@ -138,7 +159,9 @@ const items = cart.map(i => ({ id: i.id, name: i.name, image: i.image, price: i.
               <label className="block">
                 <span className="text-sm">ZIP/Postal</span>
                 <input
-                  value={zip} onChange={e => setZip(e.target.value)} required
+                  value={zip}
+                  onChange={(e) => setZip(e.target.value)}
+                  required
                   className="mt-1 w-full h-11 px-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-sky-400"
                 />
               </label>
@@ -154,14 +177,15 @@ const items = cart.map(i => ({ id: i.id, name: i.name, image: i.image, price: i.
           </section>
 
           <div className="flex gap-2">
-                        <Link to="/cart" className="px-4 py-3 rounded-lg bg-gray-200 text-sm">
-                            Back to Cart
-                        </Link>
-                    <button
+                         <Link to="/cart" className="px-4 py-3 rounded-lg bg-gray-200 text-sm">
+              Back to Cart
+            </Link>
+            <button
               type="submit"
-              className="px-4 py-3 rounded-lg bg-rose-600 text-white font-semibold text-sm hover:bg-rose-700">
-                         Place Order
-                    </button>
+             className="px-4 py-3 rounded-lg bg-rose-600 text-white font-semibold text-sm hover:bg-rose-700"
+            >
+              Place Order
+            </button>
           </div>
         </form>
 

@@ -1,4 +1,5 @@
 import type {Product} from "./Product"
+import { imagePath } from "../utils/assetPath";
 
 const cents = (d:number) => Math.round(d*100);
 
@@ -15,7 +16,7 @@ export function genDice(colors: string[], basePrice = 14.99): Product[] {
             id:nextId("dice"),
             name: `Polyhedral RPG Dice - ${color}`,
             price: cents(basePrice),
-            image: `/images/dice/${slug}-set.jpg`,
+            image: imagePath(`dice/${slug}-set.jpg`),
             category: "dice",
             tags: ["Dice", color],
 
@@ -50,7 +51,7 @@ export function genTcg(entries: TcgEntry[]): Product[] {
         id: nextId("tcg"),
         name: `${e.brand} ${e.set}`,
         price: cents(e.price),
-        image: `/images/tcg/${e.imagePath}.jpg`,
+        image: imagePath(`tcg/${e.imagePath}.jpg`),
         category: "tcg",
         tags: ["Card Game", e.brand, e.kind, ...(e.tags?? [])],
     }));

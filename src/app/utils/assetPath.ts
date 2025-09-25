@@ -4,12 +4,17 @@ const trimTrailingSlash = (value: string) =>
 const trimLeadingSlash = (value: string) =>
   value.startsWith("/") ? value.slice(1) : value;
 
-const withBase = (path: string) => {
+const normalizeBase = () => {
   const base = import.meta.env.BASE_URL ?? "/";
-  const normalizedBase = trimTrailingSlash(base);
+  const trimmed = trimTrailingSlash(base);
+  return trimmed || "/";
+};
+
+const withBase = (path: string) => {
+  const normalizedBase = normalizeBase();
   const normalizedPath = trimLeadingSlash(path);
 
-  if (!normalizedBase) {
+  if (normalizedBase === "/") {
     return `/${normalizedPath}`;
   }
 
@@ -19,3 +24,5 @@ const withBase = (path: string) => {
 export const imagePath = (path: string) => withBase(`images/${trimLeadingSlash(path)}`);
 
 export const assetPath = withBase;
+
+export const basePath = normalizeBase;

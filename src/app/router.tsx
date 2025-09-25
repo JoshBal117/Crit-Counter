@@ -5,6 +5,7 @@ import Cart from "./screens/Cart";
 import Product from "./screens/Product";
 import Checkout from "./screens/Checkout";
 import OrderConfirmation from "./screens/OrderConfirmation";
+import {basePath} from "./utils/assetPath";
 
 const router = createBrowserRouter(
   [
@@ -19,7 +20,7 @@ const router = createBrowserRouter(
       ],
     },
   ],
-  {basename: import.meta.env.BASE_URL
+  {basename: basePath()
 
   }
 );

@@ -1,3 +1,5 @@
+import { imagePath } from "../utils/assetPath";
+
 export type Product = {
     id: string;
     name: string;
@@ -7,20 +9,20 @@ export type Product = {
     tags?: string[];
 };
 
+const img = (p: string) => imagePath(p);
+
 export const  curated: Product[] = [
-  { id: "3",  name: "Warhammer 40K Starter Set",            price:12499, image: "/images/miniatures/w40k/warhammer-starter-set.jpg", category: "miniature", tags: ["Miniature","Warhammer"] },
-  { id: "4",  name: "Magic: The Gathering Final Fantasy Booster Pack", price: 799, image: "/images/tcg/mtg/ff/ff7-booster-pack.jpg", category: "tcg", tags: ["Card Game","Magic"] },
-  { id: "5",  name: "Yu-Gi-Oh! Blue-Eyes White Destiny Structure Deck", price: 999, image: "/images/tcg/yugioh/be-wd-sdeck.jpg", category: "tcg", tags: ["Card Game","Yu-Gi-Oh"] },
-  { id: "6",  name: "Board Game: Settlers of Catan",         price: 4999, image: "/images/boardgames/settlers-of-catan.jpg", category: "boardgame", tags: ["Board Game"] },
-  { id: "7",  name: "Dice Set Dusty Blue - Polyhedral RPG Dice", price:1499, image: "/images/dice/dusty-bd-set.jpg", category: "dice", tags: ["Dice"] },
-  { id: "8",  name: "Tabletop Terrain - Sci-Fi Scenery Set",  price: 2999, image: "/images/terrain/scifi-terrain.jpg", category: "terrain", tags: ["Terrain"] },
-  { id: "9",  name: "Dragonlance: Shadow of the Dragon Queen (EN)", price: 2999, image: "/images/rpg/adv-module/dl-stdq.jpg", category: "rpg", tags: ["Adventure Module"] },
-  { id: "10", name: "Arcane Tinmen Dragon Matte Emerald Sleeves- Dragon Shield", price: 499, image: "/images/decksleeves/color/green-drgn-sleeves.jpg", category: "accessories", tags: ["Accessories","Card Sleeves"]}
+  { id: "3",  name: "Warhammer 40K Starter Set",            price:12499, image: img("miniatures/w40k/warhammer-starter-set.jpg"), category: "miniature", tags: ["Miniature","Warhammer"] },
+  { id: "4",  name: "Magic: The Gathering Final Fantasy Booster Pack", price: 799, image: img("tcg/mtg/ff/ff7-booster-pack.jpg"), category: "tcg", tags: ["Card Game","Magic"] },
+  { id: "5",  name: "Yu-Gi-Oh! Blue-Eyes White Destiny Structure Deck", price: 999, image: img("tcg/yugioh/be-wd-sdeck.jpg"), category: "tcg", tags: ["Card Game","Yu-Gi-Oh"] },
+  { id: "6",  name: "Board Game: Settlers of Catan",         price: 4999, image: img("boardgames/settlers-of-catan.jpg"), category: "boardgame", tags: ["Board Game"] },
+  { id: "7",  name: "Dice Set Dusty Blue - Polyhedral RPG Dice", price:1499, image: img("dice/dusty-bd-set.jpg"), category: "dice", tags: ["Dice"] },
+  { id: "8",  name: "Tabletop Terrain - Sci-Fi Scenery Set",  price: 2999, image: img("terrain/scifi-terrain.jpg"), category: "terrain", tags: ["Terrain"] },
+  { id: "9",  name: "Dragonlance: Shadow of the Dragon Queen (EN)", price: 2999, image: img("rpg/adv-module/dl-stdq.jpg"), category: "rpg", tags: ["Adventure Module"] },
+  { id: "10", name: "Arcane Tinmen Dragon Matte Emerald Sleeves- Dragon Shield", price: 499, image: img("decksleeves/color/green-drgn-sleeves.jpg"), category: "accessories", tags: ["Accessories","Card Sleeves"]}
 ];
 
 const $ = (n: number) => Math.round(n*100);
-
-const img = (p:string) => `/images/${p}`;
 
 import {genDice, genTcg, buildTcgEntries, type TcgBrandConfig} from "./generate"
 

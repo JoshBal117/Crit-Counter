@@ -1,4 +1,5 @@
 import {Link, useLocation, useParams} from "react-router-dom";
+import { imagePath } from "../utils/assetPath";
 
 type State = {
     orderId?: string;
@@ -41,8 +42,7 @@ type State = {
                   src={it.image}
                   alt={it.name}
                   className="w-12 h-12 object-cover rounded"
-                  onError={(e) => { (e.currentTarget as HTMLImageElement).src = "/images/placeholder.jpg"; }}
-                />
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).src = imagePath("placeholder.jpg"); }}/>
                 <div className="flex-1">
                   <div className="font-medium">{it.name}</div>
                   <div className="text-sm text-gray-600">

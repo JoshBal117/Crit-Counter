@@ -1,6 +1,5 @@
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useCart } from "../cart/useCart";
-
 
 const money = (c: number) => `$${(c / 100).toFixed(2)}`;
 const sum = (xs: number[]) => xs.reduce((a, b) => a + b, 0);
